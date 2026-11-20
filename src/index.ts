@@ -3,6 +3,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import { redis } from "./config/redis";
 import projectRoutes from "./routes/project.routes";
+import chatRoutes from "./routes/chat.routes";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -31,6 +32,7 @@ app.get("/health", (_req: Request, res: Response) => {
 
 // Endpoint CRUD Projects
 app.use("/api/projects", projectRoutes);
+app.use("/api/chat", chatRoutes);
 
 app.listen(PORT, async () => {
     try {
